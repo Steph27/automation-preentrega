@@ -13,7 +13,8 @@ Preentrega del proyecto de Automatizacion QA. Se busca automatizar flujos basico
 
 Instalar las dependencias:
 
-```pip install selenium
+```python
+pip install selenium
 ```
 
 ```python
