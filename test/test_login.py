@@ -2,15 +2,20 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 def test_login_exitoso():
     driver = webdriver.Edge()
+    
+    wait = WebDriverWait(driver, 10)
 
     try:
         driver.get("https://www.saucedemo.com/")
 
-        usario = driver.find_element(By.ID, "user-name")
-        password = driver.find_element(By.ID, "password")
-        boton_login = driver.find_element(By.ID, "login-button")
+        usario = wait.until(EC.presence_of_element_located((By.ID, "user-name")))
+        password = wait.until(EC.presence_of_element_located((By.ID, "password")))
+        boton_login = wait.until(EC.element_to_be_clickable((By.ID, "login-button")))
 
         usario.  send_keys("standard_user")
         password.send_keys("secret_sauce")
